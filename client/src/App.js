@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { React, Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Blocks from './components/Blocks';
+import BlockView from './components/BlockView';
+import NoMatch from './components/NoMatch';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const Block = () => (
+  <Switch>
+    <Route exact path='/' component={Home} />
+    <Route exact path='/blocks' component={Blocks} />
+    <Route exact path='/blocks/:id' component={BlockView} />
+    <Route component={NoMatch} />
+  </Switch>
+)
 
-export default App;
+
+export default Block;
